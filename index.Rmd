@@ -2,7 +2,14 @@
 title: "Análisis de datos COVID-19 en Costa Rica - ggplot2 y DT"
 author: "Sofía Carpio"
 date: '2022-05-25'
-output: html_document
+output: 
+   html_document:
+    theme: readable    
+    toc: true
+    toc_depth: 5
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
 ---
 
 ```{r setup, include=FALSE}
