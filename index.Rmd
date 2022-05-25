@@ -1,0 +1,83 @@
+---
+title: "Análisis de datos COVID-19 en Costa Rica - ggplot2 y DT"
+author: "Sofía Carpio"
+date: '2022-05-25'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Presentación  
+Este documento presenta gráficos generados a partir de los datos de COVIC-19 en Costa Rica compartidos por el Ministerio de Salud en [https://geovision.uned.ac.cr/oges/](https://geovision.uned.ac.cr/oges/)
+
+## Entradas 
+```{r carga-datos}
+covid <- read.csv(file = "05_24_22_CSV_GENERAL.csv", sep = ";")
+```
+
+
+### Datos generales de casos 
+
+
+## Procesamiento 
+
+### Opciones generales 
+```{r opciones-generales}
+options(scipen = 7)
+```
+
+
+### Curación de datos 
+```{r conversion-fecha}
+covid$FECHA <- as.Date(covid$FECHA, format = "%d/%m/%Y")
+```
+
+
+## Salidas 
+
+### Casos a nivel nacional 
+
+#### Tabla 
+
+#### Gráfico de líneas 
+
+### Casos a nivel cantonal 
+```{r casos-a-nivel-cantonal}
+
+
+```
+
+#### Positivos 
+```{r casos-positivos-acumulados}
+plot(
+  covid$FECHA,
+  covid$positivos, 
+  type = "l",
+  xaxt = "n",
+  yaxt = "n", 
+  main = "Casos acumulados positivos de COVID-19 en Costa Rica", 
+  xlab = "Fecha",
+  ylab = "Casos")
+
+axis(
+  side = 1,
+  covid$FECHA,
+  tick = FALSE,
+  format(covid$FECHA, "%m-%y"),
+  cex.axis = 0.7
+) 
+axis(
+  side = 2,
+  covid$positivos,
+  labels = TRUE,  
+  at = seq(0, 1000000, by = 200000),
+  cex.axis = .7
+)
+```
+
+
+##### Tabla 
+
+##### Gráfico de barras 
